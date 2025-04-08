@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Dữ Liệu Và Thêm Ảnh</title>
+    <style>
+        body {
+            background-color: #ffe6f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        #output {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        img {
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tuệ có yêu Tiến không</h1>
+
+    <input type="text" id="inputField" placeholder="Nhập 'Có' hoặc 'Không'" onkeydown="checkEnter(event)">
+    <button onclick="nhapDuLieu()">OK</button>
+
+    <p id="output"></p>
+    <img id="image" src="" alt="Ảnh sẽ hiển thị ở đây">
+
+    <script>
+        function nhapDuLieu() {
+            var input = document.getElementById('inputField').value.toLowerCase().trim();
+            var image = document.getElementById('image');
+            var output = document.getElementById('output');
+
+            if (input === 'có') {
+                output.innerHTML = 'Tiến cũng yêu Tuệ❤️';
+                image.src = 'https://i.imgur.com/4g51Kte.jpeg'; // Ảnh khi chọn "Có"
+                image.style.display = 'block';
+            } else if (input === 'không') {
+                output.innerHTML = 'Quần què 😒';
+                image.src = 'https://i.imgur.com/ZG3pHym.png'; // Ảnh khi chọn "Không"
+                image.style.display = 'block';
+            } else {
+                output.innerHTML = 'Chỉ được nhập "Có" hoặc "Không"!';
+                image.style.display = 'none';
+            }
+        }
+
+        function checkEnter(event) {
+            if (event.key === 'Enter') {
+                nhapDuLieu();
+            }
+        }
+    </script>
+</body>
+</html>
